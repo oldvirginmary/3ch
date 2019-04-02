@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+
+{% block body %}
+
+<div class="container">
+  {% for article in articles %}
+    <fieldset>
+      <legend>
+        <h2><a href="article/{{ article.id }}">{{ article.title }}</a></h2>
+      </legend>
+        <p class="article_content">{{ article.content }}</p>
+        <i class="article_time">{{ article.time }}</i>
+    </fieldset>
+  {% endfor %}
+</div>
+
+{% endblock %}

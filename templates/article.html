@@ -1,0 +1,27 @@
+{% extends '_base.html' %}﻿
+
+{% block body %}
+
+<div class="container">
+  <fieldset>
+    <legend><h2>{{ article.title }}</h2></legend>
+    <p class="article_content">{{ article.content }}</p>
+    <p class="article_time">{{ article.time }}</p>
+    <fieldset>
+      <legend><b>Comments:</b></legend>
+        {% for comment in comments %}
+        <fieldset>
+          {{ comment.content }}
+        </fieldset>
+        <!--<i>{{ comment.time }}</i>-->
+        {% endfor %}
+        <fieldset>
+          <legend><b>Write comment</b></legend>
+          <input type="textarea">
+          <input type="submit" value="ok">
+        </fieldset>
+    </fieldset>
+  </fieldset>
+</div>
+
+{% endblock %}

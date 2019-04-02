@@ -1,0 +1,12 @@
+{% for article in articles %}
+Заголовок: {{ article.title }}
+Статья: {{ article.content }}
+Время публикации: {{ article.time }}
+
+    Комментарии:
+      {% for comment in comments %}
+      {%- if comment.article.id == article.id -%}
+      {{ comment.content }}
+      {%- endif %}
+      {% endfor %}
+      {% endfor %}
