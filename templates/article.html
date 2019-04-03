@@ -10,16 +10,18 @@
     <fieldset>
       <legend><b>Comments:</b></legend>
         {% for comment in comments %}
-        <fieldset>
-          {{ comment.content }}
-        </fieldset>
-        <!--<i>{{ comment.time }}</i>-->
+          <fieldset>
+            {{ comment.content }}
+          </fieldset>
         {% endfor %}
-        <fieldset>
-          <legend><b>Write comment</b></legend>
-          <input type="textarea">
-          <input type="submit" value="ok">
-        </fieldset>
+        <form action="{{ article.id }}" method="POST">
+          <fieldset>
+            <legend><b>Write comment</b></legend>
+            <input type="text" name="content">
+            <input type="hidden" name="article_id" value="{{ article.id }}">
+            <input type="submit" value="send">
+          </fieldset>
+        </form>
     </fieldset>
   </fieldset>
 </div>

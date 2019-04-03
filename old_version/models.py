@@ -8,13 +8,14 @@ from datetime import datetime
 class Article(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(256), nullable=False)
-    content = db.Column(db.String(30000), nullable=False, unique=True)
-    time = db.Column(db.DateTime, default=datetime.utcnow)
+    content = db.Column(db.String(30000), nullable=False)
+    time = db.Column(db.DateTime, default=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    content = db.Column(db.String(3000), nullable=False, unique=True)
+
+    content = db.Column(db.String(3000), nullable=False)
 
     article_id = db.Column(
         db.Integer,

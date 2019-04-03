@@ -12,6 +12,14 @@
         <i class="article_time">{{ article.time }}</i>
     </fieldset>
   {% endfor %}
+  <form method='POST'>
+    <fieldset>
+      <legend><h2>Write article</h2></legend>
+      <input type="text" name="title" style="display: block">
+      <textarea name="content" cols="30" rows="10" style="display: block"></textarea>
+      <input type="submit" value="send" style="display: block">
+    </fieldset>
+  </form>
 </div>
 
 {% endblock %}
