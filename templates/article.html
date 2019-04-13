@@ -1,6 +1,6 @@
 {% extends '_base.html' %}﻿
 
-{% block body %}
+{% block container %}
 
 <div class="container">
   <fieldset>
@@ -8,7 +8,7 @@
     <p class="article_content">{{ article.content }}</p>
     <p class="article_time">{{ article.time }}</p>
     <fieldset>
-      <legend><b>Comments:</b></legend>
+      <legend>Comments:</legend>
         {% for comment in comments %}
           <fieldset>
             {{ comment.content }}
@@ -16,8 +16,7 @@
         {% endfor %}
         <form action="{{ article.id }}" method="POST">
           <fieldset>
-            <legend><b>Write comment</b></legend>
-            <input type="text" name="content">
+            <input type="text" name="content" placeholder="write comment">
             <input type="hidden" name="article_id" value="{{ article.id }}">
             <input type="submit" value="send">
           </fieldset>

@@ -12,18 +12,10 @@ app.config.from_object(config)
 db = SQLAlchemy(app)
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['GET'])
 def index():
     from forms import ArticleForm
     from models import Article
-
-    if request.method == 'POST':
-        form = ArticleForm(request.form)
-
-        if form.validate():
-            article = Article(**form.data)
-            db.session.add(article)
-            db.session.commit()
 
     articles = Article.query.order_by(Article.time.desc()).all()
     return render_template('index.html', articles=articles)
@@ -47,33 +39,20 @@ def article(article_id):
     return render_template('article.html', article=this_article, comments=comments)
 
 
-# @app.route('/comments', methods=['POST', 'GET'])
-# def comments():
-#     from forms import CommentForm
-#     from models import Comment
-#
-#     if request.method == 'POST':
-#         print(request.form)
-#         form = CommentForm(request.form)
-#         print(form.data, form.validate())
-#
-#         if form.validate():
-#             comment = Comment(**form.data)
-#             db.session.add(comment)
-#             db.session.commit()
-#
-#     all_articles = Article.query.all()
-#     all_comments = Comment.query.all()
+@app.route('/new_article', methods=['GET', 'POST'])
+def new_article():
+    from forms import ArticleForm
+    from models import Article
 
-    # article_comments = [] # two-dimensional array
-    # for article in all_articles:
-    #     comments = Comment.query.filter(article.id == Comment.article_id).all()
-    #     article_comments.append(comments)
+    if request.method == 'POST':
+        form = ArticleForm(request.form)
 
-    # print(all_articles)
-    # print(article_comments)
+        if form.validate():
+            article = Article(**form.data)
+            db.session.add(article)
+            db.session.commit()
 
-    # return render_template('index.html', articles=all_articles, comments=all_comments)
+    return render_template('new_article.html')
 
 
 if __name__ == '__main__':

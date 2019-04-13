@@ -1,25 +1,15 @@
 {% extends '_base.html' %}
 
-{% block body %}
+{% block container %}
 
-<div class="container">
-  {% for article in articles %}
-    <fieldset>
-      <legend>
+<div class="row justify-content-center">
+{% for article in articles %}
+    <div class="article-block col-md-5">
         <h2><a href="article/{{ article.id }}">{{ article.title }}</a></h2>
-      </legend>
-        <p class="article_content">{{ article.content }}</p>
-        <i class="article_time">{{ article.time }}</i>
-    </fieldset>
-  {% endfor %}
-  <form method='POST'>
-    <fieldset>
-      <legend><h2>Write article</h2></legend>
-      <input type="text" name="title" style="display: block">
-      <textarea name="content" cols="30" rows="10" style="display: block"></textarea>
-      <input type="submit" value="send" style="display: block">
-    </fieldset>
-  </form>
+        <div class="article_content">{{ article.content }}</div>
+        <span class="article_time">{{ article.time }}</span>
+    </div>
+{% endfor %}
 </div>
 
 {% endblock %}

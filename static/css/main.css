@@ -1,0 +1,33 @@
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: inherit;
+    height: auto;
+    color: #fff;
+    background-color: #000;
+}
+
+input[type="text"] {
+    border: 3px outset grey;
+}
+
+textarea {
+    border: 3px outset grey;
+}
+
+.article-block {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: #999;
+}
+
+.article-block:last {
+    margin-right: none;
+}
+
+.article-block:hover {
+    background-color: #fff;
+}
